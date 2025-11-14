@@ -1,0 +1,85 @@
+:root{
+  --bg: #0a1224;           /* deep blue background */
+  --panel: #0f1a33;        /* panel blue */
+  --muted: #9fb3d1;        /* soft blue-gray */
+  --text: #e6eefc;         /* near-white */
+  --accent: #3b82f6;       /* blue-500 */
+  --accent-2: #60a5fa;     /* blue-400 */
+  --card: #0b1630;         /* card bg */
+  --border: #1b2a4a;       /* border */
+  --danger: #ef4444;       /* red for close button hover */
+  --shadow: 0 16px 40px rgba(2, 6, 23, .55);
+  --radius: 16px;          /* rounded edges */
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+img{max-width:100%;display:block;border-radius:12px}
+a{color:var(--accent-2);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(160%) blur(10px);
+  background:linear-gradient(180deg, rgba(10,18,36,.92), rgba(10,18,36,.7));border-bottom:1px solid var(--border)}
+.nav{max-width:1100px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}
+.logo{width:36px;height:36px;border-radius:10px;background:radial-gradient(ellipse at 30% 30%, #93c5fd, #3b82f6 55%, #1e40af);box-shadow:0 8px 18px rgba(59,130,246,.45)}
+.brand span{font-size:1.05rem}
+.btn{background:var(--accent);color:#071223;padding:10px 14px;border-radius:12px;border:1px solid #2556b6;font-weight:800;box-shadow:0 6px 16px rgba(59,130,246,.35)}
+.btn:hover{filter:brightness(1.05)}
+
+.hero{border-bottom:1px solid var(--border);background:
+  linear-gradient(180deg, rgba(59,130,246,.10), rgba(96,165,250,.05)),
+  radial-gradient(1200px 400px at 70% -120px, rgba(255,255,255,.06), transparent),
+  url('https://upload.wikimedia.org/wikipedia/commons/9/97/Bust_of_Cicero_%281st-cent._BC%29_-_Palazzo_Nuovo_-_Musei_Capitolini_-_Rome_2016.jpg') center/cover no-repeat;}
+.hero-inner{max-width:1100px;margin:0 auto;padding:72px 18px}
+.hero h1{font-size:clamp(1.9rem, 3.5vw + 1rem, 3rem);margin:0 0 10px;font-weight:900;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.hero p{margin:0;color:var(--muted);max-width:65ch}
+.hero .actions{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+
+main{max-width:1100px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:3fr 1fr;gap:28px}
+@media (max-width: 900px){main{grid-template-columns:1fr}}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.card .body{padding:16px}
+.meta{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:.9rem;margin-bottom:8px}
+.tag{padding:4px 10px;border-radius:999px;background:#0f1d3a;border:1px solid #183058;color:#cfe1ff;font-size:.75rem}
+.post-title{margin:.2rem 0 .4rem;font-size:1.35rem}
+.posts{display:grid;gap:20px}
+
+/* figcaption padding moved from inline */
+figure .meta{padding:8px 16px}
+
+aside .widget{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:18px;box-shadow:var(--shadow)}
+aside h3{margin:0 0 8px}
+.about{display:flex;gap:12px;align-items:flex-start}
+.about img{width:64px;height:64px;border-radius:12px;object-fit:cover;border:1px solid var(--border)}
+
+/* Subscribe form styles moved from inline */
+#subscribeForm input[type="email"]{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#0b1630;
+  color:var(--text);
+  margin-bottom:10px;
+}
+#subscribeForm .btn{width:100%}
+
+footer{border-top:1px solid var(--border);padding:22px 18px;margin-top:12px;background:linear-gradient(180deg, rgba(11,22,48,.6), rgba(11,22,48,.9))}
+footer .inner{max-width:1100px;margin:0 auto;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* Modal (popup) */
+.modal-overlay{position:fixed;inset:0;background:rgba(2,6,23,.65);display:none;align-items:center;justify-content:center;padding:18px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:18px;max-width:680px;width:100%;box-shadow:var(--shadow)}
+.modal header{position:relative;background:linear-gradient(180deg, rgba(59,130,246,.18), rgba(59,130,246,.06));border-bottom:1px solid var(--border);border-top-left-radius:18px;border-top-right-radius:18px}
+.modal header .title{padding:14px 18px;font-weight:900}
+.modal .content{padding:18px}
+.modal .actions{display:flex;gap:10px;justify-content:flex-end;padding:0 18px 18px}
+.icon-btn{background:transparent;border:1px solid var(--border);color:var(--text);border-radius:10px;padding:8px 12px}
+.icon-btn:hover{border-color:#2a3f6c}
+.close-btn{background:transparent;border:none;color:var(--muted);position:absolute;right:6px;top:6px;padding:8px;border-radius:10px}
+.close-btn:hover{color:#fff;background:rgba(239,68,68,.1)}
