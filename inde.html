@@ -1,11 +1,20 @@
 <!doctype html>
+<!--
+  Alternate landing page (inde.html)
+  Mirrors the Cicero Blog layout but keeps styles and scripts inline.
+  Comments explain the purpose of each major block for clarity.
+-->
 <html lang="en">
 <head>
+  <!-- Metadata and viewport for responsive layout -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cicero Blog — Blue Themed Landing</title>
   <meta name="description" content="Blue themed blogging landing page with rounded edges, accessible image descriptions, and a JS popup with lorem ipsum." />
   <style>
+    /*
+      Theme variables used throughout the page for color, spacing, and effects
+    */
     :root{
       --bg: #0a1224;           /* deep blue background */
       --panel: #0f1a33;        /* panel blue */
@@ -20,14 +29,17 @@
       --radius: 16px;          /* rounded edges */
     }
 
+    /* Base element defaults and typography */
     *{box-sizing:border-box}
     html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
     img{max-width:100%;display:block;border-radius:12px}
     a{color:var(--accent-2);text-decoration:none}
     a:hover{text-decoration:underline}
 
+    /* Utility: visually hidden content for screen readers */
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
+    /* Sticky header and navigation bar */
     header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(160%) blur(10px);
       background:linear-gradient(180deg, rgba(10,18,36,.92), rgba(10,18,36,.7));border-bottom:1px solid var(--border)}
     .nav{max-width:1100px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -37,6 +49,7 @@
     .btn{background:var(--accent);color:#071223;padding:10px 14px;border-radius:12px;border:1px solid #2556b6;font-weight:800;box-shadow:0 6px 16px rgba(59,130,246,.35)}
     .btn:hover{filter:brightness(1.05)}
 
+    /* Hero section with background image and overlaid text */
     .hero{border-bottom:1px solid var(--border);background:
       linear-gradient(180deg, rgba(59,130,246,.10), rgba(96,165,250,.05)),
       radial-gradient(1200px 400px at 70% -120px, rgba(255,255,255,.06), transparent),
@@ -46,9 +59,11 @@
     .hero p{margin:0;color:var(--muted);max-width:65ch}
     .hero .actions{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
 
+    /* Main layout grid: posts + sidebar; collapses on small screens */
     main{max-width:1100px;margin:0 auto;padding:28px 18px;display:grid;grid-template-columns:3fr 1fr;gap:28px}
     @media (max-width: 900px){main{grid-template-columns:1fr}}
 
+    /* Post cards and common elements */
     .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
     .card .body{padding:16px}
     .meta{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:.9rem;margin-bottom:8px}
@@ -56,11 +71,13 @@
     .post-title{margin:.2rem 0 .4rem;font-size:1.35rem}
     .posts{display:grid;gap:20px}
 
+    /* Sidebar widgets and About block */
     aside .widget{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:18px;box-shadow:var(--shadow)}
     aside h3{margin:0 0 8px}
     .about{display:flex;gap:12px;align-items:flex-start}
     .about img{width:64px;height:64px;border-radius:12px;object-fit:cover;border:1px solid var(--border)}
 
+    /* Footer styling */
     footer{border-top:1px solid var(--border);padding:22px 18px;margin-top:12px;background:linear-gradient(180deg, rgba(11,22,48,.6), rgba(11,22,48,.9))}
     footer .inner{max-width:1100px;margin:0 auto;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
@@ -79,6 +96,7 @@
   </style>
 </head>
 <body>
+  <!-- Header with brand and call-to-action buttons -->
   <header>
     <nav class="nav" aria-label="Primary">
       <div class="brand">
@@ -86,12 +104,15 @@
         <span>Cicero Blog</span>
       </div>
       <div class="nav-actions">
+        <!-- Smooth scroll to posts when clicked -->
         <a class="btn" href="#posts">Read Posts</a>
+        <!-- Opens the welcome modal defined at the bottom of the page -->
         <button class="btn" id="openWelcome" type="button">Open Welcome Popup</button>
       </div>
     </nav>
   </header>
 
+  <!-- Hero banner introducing theme and actions -->
   <section class="hero" role="banner">
     <div class="hero-inner">
       <h1>Blue, Rounded, and Accessible</h1>
@@ -99,18 +120,22 @@
         This landing page demonstrates a blue color theme with rounded edges. Images include descriptive alternative text to support screen readers used by blind and low‑vision users.
       </p>
       <div class="actions">
+        <!-- Button that opens a modal with background on lorem ipsum -->
         <button class="btn" id="openImageInfo" type="button">Why Lorem Ipsum?</button>
         <a class="btn" href="https://en.wikipedia.org/wiki/Cicero" target="_blank" rel="noopener">About Cicero</a>
       </div>
     </div>
   </section>
 
+  <!-- Main content: posts grid and right sidebar -->
   <main id="posts" aria-label="Main content">
     <section class="posts">
+      <!-- Post card 1 -->
       <article class="card">
         <figure>
           <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bust_of_Cicero_%281st-cent._BC%29_-_Palazzo_Nuovo_-_Musei_Capitolini_-_Rome_2016.jpg"
                alt="Marble bust associated with Cicero at the Capitoline Museums, Rome. The head and shoulders are shown with detailed carving of hair and features." aria-describedby="img1-desc" />
+          <!-- Image credit and label -->
           <figcaption class="meta" style="padding:8px 16px;">
             <span class="tag">Featured</span>
             <span>Public domain via Wikimedia Commons</span>
@@ -123,10 +148,12 @@
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae semper quis lectus nulla at volutpat. Quis ipsum suspendisse ultrices gravida.
           </p>
+          <!-- Opens the modal with a sample message -->
           <p><button class="icon-btn" data-open-modal>Open Pop‑up</button></p>
         </div>
       </article>
 
+      <!-- Post card 2 -->
       <article class="card">
         <figure>
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Cicero_-_Musei_Capitolini.jpg"
@@ -143,6 +170,7 @@
         </div>
       </article>
 
+      <!-- Post card 3 -->
       <article class="card">
         <figure>
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Cicero_-_Antonio_Zucchi.jpg"
@@ -159,6 +187,7 @@
       </article>
     </section>
 
+    <!-- Sidebar with about, subscribe, tags, and source notes -->
     <aside aria-label="Sidebar">
       <div class="widget about">
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bust_of_Cicero_%281st-cent._BC%29_-_Palazzo_Nuovo_-_Musei_Capitolini_-_Rome_2016.jpg"
@@ -174,6 +203,7 @@
       <div class="widget">
         <h3>Subscribe</h3>
         <p class="meta">Get the latest ipsum delivered weekly.</p>
+        <!-- Inline form submit prevents navigation and shows a modal -->
         <form onsubmit="event.preventDefault(); window.showModal('Thanks for subscribing! Lorem ipsum dolor sit amet, consectetur adipiscing elit.');">
           <label for="email2" class="sr-only">Email address</label>
           <input id="email2" name="email" type="email" placeholder="you@example.com" required
@@ -199,6 +229,7 @@
     </aside>
   </main>
 
+  <!-- Footer with copyright and link to the other landing page -->
   <footer>
     <div class="inner">
       <div>© 2025 Cicero Blog</div>
@@ -230,6 +261,7 @@
   </div>
 
   <script>
+    // Smooth scrolling for in-page anchors, e.g., "Read Posts" button
     // Simple enhancement: animated anchor scrolling
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
@@ -242,7 +274,7 @@
         }
       });
     });
-
+    // Cache modal elements and set up open/close logic
     const overlay = document.getElementById('modalOverlay');
     const closeBtn = document.getElementById('closeModal');
     const okBtn = document.getElementById('okBtn');
@@ -251,6 +283,7 @@
     const modalContent = document.getElementById('modalContent');
     let lastFocused = null;
 
+    // Show the modal and move focus into it
     function openModal(html){
       if (typeof html === 'string') modalContent.innerHTML = `<p>${html}</p>`;
       lastFocused = document.activeElement;
@@ -260,6 +293,7 @@
       setTimeout(() => (okBtn?.focus()), 0);
     }
 
+    // Hide the modal and restore focus to the previously focused control
     function closeModal(){
       overlay.classList.remove('open');
       overlay.setAttribute('aria-hidden','true');
@@ -268,13 +302,14 @@
       }
     }
 
-    window.showModal = openModal; // expose for form handler
+    window.showModal = openModal; // expose for form handler and other inline uses
 
-    // Wire triggers
+    // Wire triggers: any button with data-open-modal shows sample content
     document.querySelectorAll('[data-open-modal]').forEach(btn => btn.addEventListener('click', () => {
       openModal('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.');
     }));
 
+    // Specific buttons opening contextual content
     openWelcome?.addEventListener('click', () => {
       openModal('Welcome! This is a sample pop-up filled with lorem ipsum to demonstrate a simple modal.');
     });
@@ -283,6 +318,7 @@
       openModal('“Lorem ipsum” originates from Cicero\'s De Finibus. It has been used as placeholder text since the 1500s.');
     });
 
+    // Close interactions: X button, OK button, clicking the overlay, and Escape key
     closeBtn?.addEventListener('click', closeModal);
     okBtn?.addEventListener('click', closeModal);
     overlay?.addEventListener('click', (e) => {

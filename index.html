@@ -1,14 +1,26 @@
 
 <!doctype html>
+<!--
+  Cicero Blog landing page
+  This HTML lays out a blue-themed, accessible blog-like landing with:
+  - Sticky header and primary navigation
+  - Hero banner with actions
+  - Main content with posts and a sidebar
+  - Accessible modal (popup) for messages
+  - External CSS (styles.styles) and JS (scroll.js, modal.js)
+-->
 <html lang="en">
 <head>
+  <!-- Basic document metadata and responsive viewport setup -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cicero Blog — Blue Themed Landing</title>
   <meta name="description" content="Blue themed blogging landing page with rounded edges, accessible image descriptions, and a JS popup with lorem ipsum." />
+  <!-- External stylesheet with all page styles -->
   <link rel="stylesheet" href="styles.styles" />
 </head>
 <body>
+  <!-- Sticky header with brand and quick actions navigation -->
   <header>
     <nav class="nav" aria-label="Primary">
       <div class="brand">
@@ -16,12 +28,15 @@
         <span>Cicero Blog</span>
       </div>
       <div class="nav-actions">
+        <!-- Anchor scrolls to posts section; enhanced with smooth scrolling in scroll.js -->
         <a class="btn" href="#posts">Read Posts</a>
+        <!-- Opens the welcome message modal via modal.js -->
         <button class="btn" id="openWelcome" type="button">Open Welcome Popup</button>
       </div>
     </nav>
   </header>
 
+  <!-- Hero banner introducing the theme and primary actions -->
   <section class="hero" role="banner">
     <div class="hero-inner">
       <h1>Blue, Rounded, and Accessible</h1>
@@ -29,14 +44,17 @@
         This landing page demonstrates a blue color theme with rounded edges. Images include descriptive alternative text to support screen readers used by blind and low‑vision users.
       </p>
       <div class="actions">
+        <!-- Button wires to a modal explaining the origin of lorem ipsum -->
         <button class="btn" id="openImageInfo" type="button">Why Lorem Ipsum?</button>
         <a class="btn" href="https://en.wikipedia.org/wiki/Cicero" target="_blank" rel="noopener">About Cicero</a>
       </div>
     </div>
   </section>
 
+  <!-- Main content area: posts grid and sidebar -->
   <main id="posts" aria-label="Main content">
     <section class="posts">
+      <!-- Post card 1 with figure, accessible description, and action -->
       <article class="card">
         <figure>
           <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bust_of_Cicero_%281st-cent._BC%29_-_Palazzo_Nuovo_-_Musei_Capitolini_-_Rome_2016.jpg"
@@ -53,10 +71,12 @@
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae semper quis lectus nulla at volutpat. Quis ipsum suspendisse ultrices gravida.
           </p>
+          <!-- Triggers modal with sample content via modal.js -->
           <p><button class="icon-btn" data-open-modal>Open Pop‑up</button></p>
         </div>
       </article>
 
+      <!-- Post card 2 -->
       <article class="card">
         <figure>
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Cicero_-_Musei_Capitolini.jpg"
@@ -73,6 +93,7 @@
         </div>
       </article>
 
+      <!-- Post card 3 -->
       <article class="card">
         <figure>
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Cicero_-_Antonio_Zucchi.jpg"
@@ -89,8 +110,10 @@
       </article>
     </section>
 
+    <!-- Sidebar with about, subscribe form, tag list, and notes -->
     <aside aria-label="Sidebar">
       <div class="widget about">
+        <!-- Supportive image demonstrating alt text usage -->
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Bust_of_Cicero_%281st-cent._BC%29_-_Palazzo_Nuovo_-_Musei_Capitolini_-_Rome_2016.jpg"
              alt="Close-up of the Cicero bust showing the eyes and forehead." />
         <div>
@@ -104,6 +127,7 @@
       <div class="widget">
         <h3>Subscribe</h3>
         <p class="meta">Get the latest ipsum delivered weekly.</p>
+        <!-- Subscription form handled by modal.js; no page reload on submit -->
         <form id="subscribeForm">
           <label for="email2" class="sr-only">Email address</label>
           <input id="email2" name="email" type="email" placeholder="you@example.com" required />
@@ -128,6 +152,7 @@
     </aside>
   </main>
 
+  <!-- Footer with copyright and alternate page link -->
   <footer>
     <div class="inner">
       <div>© 2025 Cicero Blog</div>
@@ -145,6 +170,7 @@
         <button class="close-btn" id="closeModal" aria-label="Close pop-up">✕</button>
       </header>
       <div class="content" id="modalContent">
+        <!-- Default modal content is replaced dynamically by modal.js when opened -->
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum.
         </p>
@@ -158,6 +184,7 @@
     </div>
   </div>
 
+  <!-- Scripts: smooth in-page scrolling and modal behavior -->
   <script src="scroll.js" defer></script>
   <script src="modal.js" defer></script>
 </body>
